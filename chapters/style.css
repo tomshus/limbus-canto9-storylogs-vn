@@ -71,7 +71,11 @@ td:first-child {
   margin-bottom: 5px;
   z-index: 1;
   color: #fbdbb3;
-  text-shadow: 0 0 2.5px #000, 0 0 2.5px #000,0 0 2.5px #000,0 0 2.5px #000,0 0 2.5px #000;
+  text-shadow: 0 0 2px #000, 0 0 2px #000,0 0 2px #000,0 0 2px #000,0 0 2px #000;
+}
+.name.npc {
+  background-color: #bf9500;
+  font-size: 0.9em;
 }
 .name.lce {
   background-color: #ffffa1;
@@ -86,11 +90,6 @@ td:first-child {
 .name.araya {
   background-color: #090909;
   color: #5c53e7;
-  font-size: 0.9em;
-}
-.name.index {
-  background-color: #86bada;
-  color: #f3f1eb;
   font-size: 0.9em;
 }
 .name.isan {
@@ -139,7 +138,7 @@ td:first-child {
 }
 .name.outis  {
   background-color: #325339;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.gregor  {
   background-color: #69350b;
@@ -148,6 +147,46 @@ td:first-child {
 .name.saude {
   background-color: #f8c200;
   color: #0c0c41;
+  font-size: 0.9em;
+  text-shadow: none;
+}
+.name.busstaff {
+  background-color: #84a79d;
+  font-size: 0.9em;
+}
+.name.thumb {
+  background-color: #361e22;
+  color: #caa75f;
+  font-size: 0.9em;
+}
+.name.index {
+  background-color: #86bada;
+  color: #f3f1eb;
+  font-size: 0.9em;
+}
+.name.middle {
+  background-color: #a000c4;
+  color: #f5f4e9;
+  font-size: 0.9em;
+}
+.name.ring {
+  background-color: #FFFFFF;
+  color: #a43c3f;
+  font-size: 0.9em;
+}
+.name.pinky {
+  background-color: #ffce00;
+  color: #f8e9c8;
+  font-size: 0.9em;
+}
+.name.ezra {
+  background-color: #384049;
+  color: #ce8e5e;
+  font-size: 0.9em;
+}
+.name.lcd {
+  background-color: #0b1310;
+  color: #fee265;
   font-size: 0.9em;
 }
 
