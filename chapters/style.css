@@ -9,7 +9,7 @@ body {
   font-size: 20px;
   background-attachment: fixed;
   background-size: cover;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 .content {
   max-width: 940px;
@@ -233,5 +233,11 @@ td:first-child {
   }
   img {
     max-width: 100%;
+  }
+  .voice-btn img {
+  width: 30px;
+  }
+  .icon {
+    width: 30%;
   }
 }
