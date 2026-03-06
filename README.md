@@ -1,5 +1,5 @@
 # Thư Viện Canto IX Limbus Company Tiếng Việt
-### https://tomshus.github.io/limbus-storylogs-vn/
+### https://tomshus.github.io/limbus-canto9-storylogs-vn/
 Bản dịch Canto IX của Limbus Company
 <br>
 Hiện tại chỉ chứa Canto IX còn về sau có dịch thêm cái gì thì đang cân nhắc.
