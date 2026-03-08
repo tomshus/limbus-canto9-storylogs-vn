@@ -1,7 +1,28 @@
-const PLAY_IMAGE = "../assets/icons/playbutton.png";
-const PAUSE_IMAGE = "../assets/icons/pausebutton.png";
+const ICONS_PATH = "../assets/icons/";
+const PLAY_IMAGE = `${ICONS_PATH}playbutton.png`;
+const PAUSE_IMAGE = `${ICONS_PATH}pausebutton.png`;
+const VOICES_PATH = "../assets/voices";
 
-// Get all voice containers
+// Update all voice audio sources to use the VOICES_PATH variable
+document.querySelectorAll('audio.voice').forEach(audio => {
+    const source = audio.querySelector('source');
+    if (source) {
+        const currentSrc = source.getAttribute('src');
+        if (currentSrc) {
+            source.setAttribute('src', `${VOICES_PATH}/${currentSrc}`);
+            audio.load(); // Reload the audio element with the new source
+        }
+    }
+});
+
+// Update all icon img sources to use the ICONS_PATH variable
+document.querySelectorAll('td.icon img').forEach(img => {
+    const currentSrc = img.getAttribute('src');
+    if (currentSrc) {
+        img.setAttribute('src', `${ICONS_PATH}${currentSrc}`);
+    }
+});
+
 document.querySelectorAll('.voice-container').forEach(container => {
     const audio = container.querySelector('.voice');
     
@@ -21,7 +42,6 @@ document.querySelectorAll('.voice-container').forEach(container => {
     
     const icon = container.querySelector('.status-icon');
 
-    // Function to handle the toggle
     function toggleAudio() {
         if (audio.paused) {
             audio.play();
@@ -32,10 +52,8 @@ document.querySelectorAll('.voice-container').forEach(container => {
         }
     }
 
-    // Add click event listener to the button
     btn.addEventListener('click', toggleAudio);
 
-    // If the audio ends naturally, switch back to the play icon
     audio.addEventListener('ended', () => {
         icon.src = PLAY_IMAGE;
     });

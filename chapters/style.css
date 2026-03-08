@@ -68,6 +68,9 @@ h1 {
 img {
   max-width: 190px;
 }
+.cg img {
+  max-width: 100%;
+}
 .info {
   text-align: center;
 }
