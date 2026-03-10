@@ -234,7 +234,7 @@ td:first-child {
     max-width: fit-content;
   }
   body {
-    font-size: 15px;
+    font-size: 16px;
   }
   audio {
     max-width: 100%;
@@ -252,5 +252,8 @@ td:first-child {
   }
   body {
     font-size: 12px;
+  }
+  .voice-btn img {
+  width: 20px;
   }
 }
