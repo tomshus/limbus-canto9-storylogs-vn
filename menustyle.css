@@ -1,0 +1,71 @@
+:root {
+  --main: #e3c39b;
+  --links: #cf0000;
+  --first: #3f0000;
+  --second: #291810;
+  --third: #533a2b;
+  --fourth: #ba5503;
+  --fifth: #a16a3c;
+}
+a:-webkit-any-link {
+  color: var(--links);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--main);
+}
+
+body {
+  background: #000000;
+  font-family: helvetica;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  padding: 10px;
+}
+
+h1, h2 {
+  margin: 0;
+}
+
+.chapterselect a {
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-family: Helvetica;
+  font-size: larger;
+  padding: 10px;
+  align-items: center;
+  font-weight: bold;
+  text-shadow: black 0px 0px 2px, black 0px 0px 3px, black 0px 0px 4px,
+    black 0px 0px 5px, black 0px 0px 7px, 1.5px 1.5px 0 black,
+    1.5px -1.5px 0 black, -1.5px 1.5px 0 black, -1.5px -1.5px 0 black,
+    1.5px 0px 0 black, 0px 1.5px 0 black, -1.5px 0px 0 black,
+    0px -1.5px 0 black;
+  transition: 0.1s;
+  text-decoration: none;
+  height: 150px;
+  max-width: 450px;
+  width: 90vw;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 15px;
+  border-radius: 3%;
+}
+.chapterselect a:hover {
+  font-size: x-large;
+  color: var(--links);
+}
+.chapterselect {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}

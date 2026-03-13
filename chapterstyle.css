@@ -3,6 +3,16 @@
   src: url("../assets/fonts/LiberationSans.ttf") format("truetype");
 }
 
+:root {
+  --main: #e3c39b;
+  --links: #cf0000;
+  --first: #3f0000;
+  --second: #291810;
+  --third: #533a2b;
+  --fourth: #ba5503;
+  --fifth: #a16a3c;
+}
+
 body {
   background: black;
   font-family: 'text', helvetica;
@@ -231,7 +241,7 @@ td:first-child {
 
 @media screen and (max-width: 800px) {
   .content {
-    max-width: fit-content;
+    max-width: 80vw;
   }
   body {
     font-size: 16px;
@@ -247,6 +257,9 @@ td:first-child {
   }
 }
 @media screen and (max-width: 500px) {
+  .content {
+    max-width: fit-content;
+  }
   .icon {
     width: 30%;
   }
