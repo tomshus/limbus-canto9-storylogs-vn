@@ -15,12 +15,33 @@ document.querySelectorAll('audio.voice').forEach(audio => {
     }
 });
 
-// Update all icon img sources to use the ICONS_PATH variable
+// Update all icon img sources
 document.querySelectorAll('td.icon img').forEach(img => {
     const currentSrc = img.getAttribute('src');
     if (currentSrc) {
         img.setAttribute('src', `${ICONS_PATH}${currentSrc}`);
     }
+});
+
+// Set default volume for all music (those with controls)
+document.querySelectorAll('audio[controls]').forEach(audio => {
+    audio.volume = 0.7;
+});
+
+// Add loop for all <audio controls>
+document.querySelectorAll('audio[controls]').forEach(audio => {
+    audio.loop = true;
+});
+
+// Ensure only one music player is playing at a time
+document.querySelectorAll('audio[controls]').forEach(audio => {
+    audio.addEventListener('play', () => {
+        document.querySelectorAll('audio[controls]').forEach(otherAudio => {
+            if (otherAudio !== audio) {
+                otherAudio.pause();
+            }
+        });
+    });
 });
 
 document.querySelectorAll('.voice-container').forEach(container => {
