@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'context';
+  src: url("assets/fonts/LiberationSans.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'title';
+  src: url("assets/fonts/VHMikodacs.woff2") format("woff2");
+}
+
 :root {
   --main: #e3c39b;
   --links: #cf0000;
@@ -14,14 +23,14 @@ a:-webkit-any-link {
 }
 
 a:hover {
-  color: var(--main);
+  color: #fddf01;
 }
 
 body {
   background: #000000;
-  font-family: helvetica;
+  font-family: 'context', helvetica;
   text-align: center;
-  color: white;
+  color: var(--main);
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -29,14 +38,16 @@ body {
 }
 
 h1, h2 {
+  font-family: 'title', helvetica;
+  letter-spacing: 1px;
   margin: 0;
 }
 
 .chapterselect a {
   background-color: transparent;
-  color: white;
+  color: var(--main);
   border: none;
-  font-family: Helvetica;
+  font-family: 'context', Helvetica;
   font-size: larger;
   padding: 10px;
   align-items: center;
@@ -49,8 +60,7 @@ h1, h2 {
   transition: 0.1s;
   text-decoration: none;
   height: 150px;
-  max-width: 450px;
-  width: 90vw;
+  width: 70vw;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -61,7 +71,7 @@ h1, h2 {
 }
 .chapterselect a:hover {
   font-size: x-large;
-  color: var(--links);
+  color: #fddf01;
 }
 .chapterselect {
   display: flex;

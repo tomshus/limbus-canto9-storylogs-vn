@@ -1,6 +1,10 @@
 @font-face {
-  font-family: 'text';
-  src: url("../assets/fonts/LiberationSans.ttf") format("truetype");
+  font-family: 'context';
+  src: url("assets/fonts/LiberationSans.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'title';
+  src: url("assets/fonts/VHMikodacs.woff2") format("woff2");
 }
 
 :root {
@@ -15,7 +19,7 @@
 
 body {
   background: black;
-  font-family: 'text', helvetica;
+  font-family: 'context', helvetica;
   font-size: 20px;
   background-attachment: fixed;
   background-size: cover;
@@ -69,6 +73,7 @@ td {
   place-items: center;
 }
 h1 {
+  font-family: 'title', helvetica;
   color: #d31d1d;
   z-index: 1;
   text-shadow: 0 0 2px #000, 0 0 2px #000,0 0 2px #000,0 0 2px #000,0 0 2px #000;
@@ -93,11 +98,11 @@ a:hover {
   text-decoration: none;
 }
 .episodes {
+  font-family: 'title', 'context';
   color: var(--links);
   text-shadow: 0 0 2px #000, 0 0 2px #000,0 0 2px #000,0 0 2px #000,0 0 2px #000;
   background-color: var(--fourth);
   text-align: center;
-  font-weight: bold;
 }
 
 td:first-child {
@@ -105,10 +110,9 @@ td:first-child {
 }
 
 .name {
-  font-family: helvetica;
+  font-family: 'title', 'context', helvetica;
   padding-top: 3.5px;
   font-size: 0.8em;
-  font-weight: bold;
   display: block;
   width:100%;
   margin-bottom: 5px;
@@ -253,7 +257,7 @@ td:first-child {
     width: 20%;
   }
   .voice-btn img {
-  width: 30px;
+    width: 30px;
   }
 }
 @media screen and (max-width: 500px) {
