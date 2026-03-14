@@ -19,18 +19,16 @@
             }
             /* this will change the background */
             body {
-            background-image: url(../assets/covers/backgrounds/danteh.png);
+            background-image: url(assets/covers/backgrounds/danteh.png);
             }
             .content {
                 width:fit-content;
-                max-width: 90vw;
+                max-width: fit-content;
             }
 
-            /* Automatically number glossary rows (no need to type numbers manually) */
             table.auto-number {
                 counter-reset: rowNum;
             }
-            /* Skip the header row when counting */
             table.auto-number tr:not(:first-child) {
                 counter-increment: rowNum;
             }
@@ -38,6 +36,12 @@
                 content: counter(rowNum);
                 display: inline-block;
                 min-width: 1.5em;
+            }
+
+            @media screen and (min-width: 750px) {
+                .content {
+                    max-width: 85vw;
+                }
             }
         </style>
     </head>
