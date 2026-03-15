@@ -25,7 +25,7 @@ document.querySelectorAll('td.icon img').forEach(img => {
 
 // Set default volume for all music (those with controls)
 document.querySelectorAll('audio[controls]').forEach(audio => {
-    audio.volume = 0.7;
+    audio.volume = 0.2;
 });
 
 // Add loop for all <audio controls>
