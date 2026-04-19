@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'context';
-  src: url("assets/fonts/LiberationSans.ttf") format("truetype");
+  src: url("../assets/fonts/LiberationSans.ttf") format("truetype");
 }
 @font-face {
   font-family: 'title';
-  src: url("assets/fonts/VHMikodacs.woff2") format("woff2");
+  src: url("../assets/fonts/VHMikodacs.woff2") format("woff2");
 }
 
 :root {
@@ -15,6 +15,23 @@
   --third: #533a2b;
   --fourth: #ba5503;
   --fifth: #a16a3c;
+  --plyr-color-main: #5c53e7;
+  --plyr-audio-controls-background: #fdfdfd; 
+  --plyr-audio-control-color: #cf0000;
+  --plyr-range-fill-background: #5c53e7;
+}
+
+.plyr--audio {
+  border-radius: 12px;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  background-color: var(--plyr-audio-controls-background);
+  margin: 10px 0 10px 0;
+  transition: border-color 0.5s ease-in-out !important;
+}
+
+.plyr--audio.plyr--playing {
+  border-color: var(--plyr-audio-control-color) !important; 
 }
 
 body {
@@ -81,6 +98,7 @@ h1 {
 }
 img {
   max-width: 100%;
+  display: block;
 }
 video{
   max-width: 100%;
@@ -122,66 +140,66 @@ td:first-child {
 }
 .name.npc {
   background-color: #bf9500;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.lce {
   background-color: #ffffa1;
   color: #fc3a3a;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.yoshihide {
   background-color: #090909;
   color: #cf0000;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.araya {
   background-color: #090909;
   color: #5c53e7;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.isan {
   background-color: #d4e1e8;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.faust {
   background-color: #ffb1b4;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.donki {
   background-color: #ffef23;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.ryoshu {
   background-color: #cf0000;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.meur {
   background-color: #293b95;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.honglu {
   background-color: #5bffde;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.heath {
   background-color: #4e3076;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.ishy {
   background-color: #ff9500;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.rodya {
   background-color: #820000;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.dante {
   background-color: #b01c37;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.sinclair {
   background-color: #8b9c15;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.outis  {
   background-color: #325339;
@@ -189,52 +207,52 @@ td:first-child {
 }
 .name.gregor  {
   background-color: #69350b;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.saude {
   background-color: #f8c200;
   color: #0c0c41;
-  font-size: 0.9em;
+  font-size: 1em;
   text-shadow: none;
 }
 .name.busstaff {
   background-color: #84a79d;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.thumb {
   background-color: #361e22;
   color: #caa75f;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.index {
   background-color: #86bada;
   color: #f3f1eb;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.middle {
   background-color: #a000c4;
   color: #f5f4e9;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.ring {
   background-color: #FFFFFF;
   color: #a43c3f;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.pinky {
   background-color: #ffce00;
   color: #f8e9c8;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.ezra {
   background-color: #384049;
   color: #ce8e5e;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .name.lcd {
   background-color: #0b1310;
   color: #fee265;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 
 .icon {
