@@ -3,7 +3,6 @@ ref/
 .vscode
 *.py
 assets/voices/voiceplacing
-canto9-2.html
 canto9-3.html
 *draft*
 *test*
