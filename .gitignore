@@ -1,4 +1,3 @@
-chapters/test.html
 ref/
 .vscode
 *.py
@@ -7,3 +6,4 @@ canto9-3.html
 *draft*
 *test*
 tools/
+assets/raw

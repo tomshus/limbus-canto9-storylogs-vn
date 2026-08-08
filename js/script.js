@@ -1,6 +1,6 @@
 const ICONS_PATH = "../assets/icons/";
-const PLAY_IMAGE = `${ICONS_PATH}playbutton.png`;
-const PAUSE_IMAGE = `${ICONS_PATH}pausebutton.png`;
+const PLAY_IMAGE = `${ICONS_PATH}playbutton.webp`;
+const PAUSE_IMAGE = `${ICONS_PATH}pausebutton.webp`;
 const VOICES_PATH = "../assets/voices";
 
 // PLYR INJECTION & CONFIG LOGIC 
@@ -39,18 +39,6 @@ const VOICES_PATH = "../assets/voices";
     document.body.appendChild(script);
 })();
 
-// Update all voice audio sources
-document.querySelectorAll('audio.voice').forEach(audio => {
-    const source = audio.querySelector('source');
-    if (source) {
-        const currentSrc = source.getAttribute('src');
-        if (currentSrc) {
-            source.setAttribute('src', `${VOICES_PATH}/${currentSrc}`);
-            audio.load(); // Reload the audio element with the new source
-        }
-    }
-});
-
 // Update all icon img sources
 document.querySelectorAll('td.icon img').forEach(img => {
     const currentSrc = img.getAttribute('src');
@@ -59,59 +47,88 @@ document.querySelectorAll('td.icon img').forEach(img => {
     }
 });
 
-// // Add loop for all <audio controls>
-// document.querySelectorAll('audio[controls]').forEach(audio => {
-//     audio.loop = true;
-// });
+// Global audio 
+const sharedVoiceAudio = new Audio();
+sharedVoiceAudio.preload = 'none';
+sharedVoiceAudio.volume = 1.0;
+let activeVoiceButton = null;
+let activeVoiceSrc = null;
 
-// // Set default volume for all music (those with controls)
-// document.querySelectorAll('audio[controls]').forEach(audio => {
-//     audio.volume = 0.5;
-// });
+sharedVoiceAudio.addEventListener('ended', () => {
+    if (activeVoiceButton) {
+        const icon = activeVoiceButton.querySelector('.status-icon');
+        if (icon) {
+            icon.src = PLAY_IMAGE;
+        }
+    }
+    activeVoiceButton = null;
+    activeVoiceSrc = null;
+});
 
-// // Ensure only one music player is playing at a time
-// document.querySelectorAll('audio[controls]').forEach(audio => {
-//     audio.addEventListener('play', () => {
-//         document.querySelectorAll('audio[controls]').forEach(otherAudio => {
-//             if (otherAudio !== audio) {
-//                 otherAudio.pause();
-//             }
-//         });
-//     });
-// });
+sharedVoiceAudio.addEventListener('pause', () => {
+    if (activeVoiceButton && sharedVoiceAudio.src && sharedVoiceAudio.paused) {
+        const icon = activeVoiceButton.querySelector('.status-icon');
+        if (icon) {
+            icon.src = PLAY_IMAGE;
+        }
+    }
+});
 
 document.querySelectorAll('.voice-container').forEach(container => {
-    const audio = container.querySelector('.voice');
-    
-    // Create button if it doesn't exist because I'm lazy to paste it everytime
+    let voiceSrc = container.dataset.voice;
+    if (!voiceSrc) {
+        return;
+    }
+
+    // create play button 'cause i'm lazy
     let btn = container.querySelector('.voice-btn');
     if (!btn) {
         btn = document.createElement('button');
         btn.className = 'voice-btn';
-        
+
         const icon = document.createElement('img');
         icon.className = 'status-icon';
         icon.src = PLAY_IMAGE;
-        
+
         btn.appendChild(icon);
         container.appendChild(btn);
     }
-    
+
     const icon = container.querySelector('.status-icon');
 
     function toggleAudio() {
-        if (audio.paused) {
-            audio.play();
-            icon.src = PAUSE_IMAGE;
+        const fullUrl = `${VOICES_PATH}/${voiceSrc}`;
+        const sameVoice = activeVoiceSrc === voiceSrc && sharedVoiceAudio.src.endsWith(voiceSrc);
+
+        if (!sameVoice || sharedVoiceAudio.paused) {
+            if (activeVoiceButton && activeVoiceButton !== btn) {
+                const oldIcon = activeVoiceButton.querySelector('.status-icon');
+                if (oldIcon) {
+                    oldIcon.src = PLAY_IMAGE;
+                }
+            }
+
+            sharedVoiceAudio.src = fullUrl;
+            activeVoiceButton = btn;
+            activeVoiceSrc = voiceSrc;
+            sharedVoiceAudio.play().then(() => {
+                if (icon) {
+                    icon.src = PAUSE_IMAGE;
+                }
+            }).catch(() => {
+                if (icon) {
+                    icon.src = PLAY_IMAGE;
+                }
+            });
         } else {
-            audio.pause();
-            icon.src = PLAY_IMAGE;
+            sharedVoiceAudio.pause();
+            if (icon) {
+                icon.src = PLAY_IMAGE;
+            }
+            activeVoiceButton = null;
+            activeVoiceSrc = null;
         }
     }
 
     btn.addEventListener('click', toggleAudio);
-
-    audio.addEventListener('ended', () => {
-        icon.src = PLAY_IMAGE;
-    });
 });
