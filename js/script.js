@@ -3,6 +3,49 @@ const PLAY_IMAGE = `${ICONS_PATH}playbutton.webp`;
 const PAUSE_IMAGE = `${ICONS_PATH}pausebutton.webp`;
 const VOICES_PATH = "../assets/voices";
 
+// EAGER/LAZY IMG LOADING + BACKGROUND-IMAGE PRELOAD
+document.addEventListener('DOMContentLoaded', () => {
+    // Set loading attributes
+    try {
+        const imgs = Array.from(document.images || []);
+        imgs.forEach((img, idx) => {
+            if (idx < 4) {
+                img.setAttribute('loading', 'eager');
+            } else {
+                if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
+            }
+        });
+    } catch (e) {
+        console.warn('Error applying eager/lazy loading to images', e);
+    }
+
+    // rel preload
+    try {
+        const styleEls = Array.from(document.querySelectorAll('[style*="background-image"]'));
+        styleEls.forEach(el => {
+            const style = el.getAttribute('style') || '';
+            const m = style.match(/background-image\s*:\s*url\((['"]?)([^'"\)]+)\1\)/i);
+            if (!m) return;
+            const url = m[2];
+            const href = new URL(url, location.href).href;
+
+            const already = Array.from(document.querySelectorAll('link[rel="preload"][as="image"]')).some(l => {
+                try { return new URL(l.href, location.href).href === href; } catch { return l.href === href; }
+            });
+
+            if (!already) {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = href;
+                document.head.appendChild(link);
+            }
+        });
+    } catch (e) {
+        console.warn('Error preloading background-image(s)', e);
+    }
+});
+
 // PLYR INJECTION & CONFIG LOGIC 
 (function() {
     if (!document.querySelector('link[href*="plyr.css"]')) {
@@ -47,7 +90,7 @@ document.querySelectorAll('td.icon img').forEach(img => {
     }
 });
 
-// Global audio 
+// GLOBAL AUDIO 
 const sharedVoiceAudio = new Audio();
 sharedVoiceAudio.preload = 'none';
 sharedVoiceAudio.volume = 1.0;

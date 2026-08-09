@@ -100,6 +100,11 @@ h1 {
 img {
   max-width: 100%;
   display: block;
+  margin:auto;
+}
+td[colspan="2"] img {
+  height: auto;
+  aspect-ratio: 16 / 9;
 }
 video{
   max-width: 100%;
@@ -256,7 +261,7 @@ td:first-child {
 }
 
 .icon {
-  width: 20%;
+  width: auto;
   position: relative;
   text-align: center;
 }      
@@ -271,9 +276,6 @@ td:first-child {
   audio {
     max-width: 100%;
   }
-  .icon {
-    width: 20%;
-  }
   .voice-btn img {
     width: 30px;
   }
@@ -281,9 +283,6 @@ td:first-child {
 @media screen and (max-width: 500px) {
   .content {
     max-width: fit-content;
-  }
-  .icon {
-    width: 30%;
   }
   body {
     font-size: 12px;
