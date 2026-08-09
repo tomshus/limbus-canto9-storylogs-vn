@@ -44,6 +44,18 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) {
         console.warn('Error preloading background-image(s)', e);
     }
+
+    // Preload none media controls
+    try {
+        const mediaControls = Array.from(document.querySelectorAll('audio[controls], video[controls]'));
+        mediaControls.forEach(media => {
+            if (!media.hasAttribute('preload')) {
+                media.setAttribute('preload', 'none');
+            }
+        });
+    } catch (e) {
+        console.warn('Error applying preload="none" to media controls', e);
+    }
 });
 
 // PLYR INJECTION & CONFIG LOGIC 
