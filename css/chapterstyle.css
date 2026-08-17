@@ -261,12 +261,15 @@ td:first-child {
 }
 
 .icon {
-  width: auto;
+  width: 120px;
   position: relative;
   text-align: center;
 }      
 
 @media screen and (max-width: 800px) {
+  .icon {
+    width: 90px;
+  }
   .content {
     max-width: 80vw;
   }
@@ -281,6 +284,9 @@ td:first-child {
   }
 }
 @media screen and (max-width: 500px) {
+  .icon {
+    width: 70px;
+  }
   .content {
     max-width: fit-content;
   }
